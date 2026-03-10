@@ -17,7 +17,7 @@ Plataforma web de ingenieria de suspension para el equipo de MotoStudent. Herram
 
 ## Demo
 
-La app esta desplegada en Render: *(link pendiente tras deploy)*
+La app esta desplegada en Render: **https://analisissuspension.onrender.com**
 
 ## Ejecutar en local
 
