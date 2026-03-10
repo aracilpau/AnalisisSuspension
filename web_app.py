@@ -493,12 +493,11 @@ def fork_compare():
         weight = float(data.get('weight', 95))
 
         weight_force = weight * 9.81
-        # Spring rates in lbs/in, convert to N/mm (1 lbs/in = 0.17513 N/mm)
-        spring_rates_lbsin = [35, 40, 45, 50, 55, 60, 65]
+        # Spring rates in N/mm (FGAM027 available springs)
+        spring_rates_nmm = [6.13, 7.01, 7.88, 8.76, 9.63, 10.51, 11.38]
         results = []
 
-        for k_lbsin in spring_rates_lbsin:
-            k = k_lbsin * 0.17513  # N/mm per spring
+        for k in spring_rates_nmm:
             total_rate = 2 * k
             sag = weight_force / total_rate - preload
             if sag < 0:
@@ -507,7 +506,6 @@ def fork_compare():
                 sag = travel
             sag_pct = (sag / travel) * 100
             results.append({
-                'spring_rate': k_lbsin,
                 'spring_rate_nmm': round(k, 2),
                 'sag': round(sag, 1),
                 'sag_percent': round(sag_pct, 1),
@@ -528,7 +526,7 @@ def fork_compare():
 
         sags = [r['sag'] for r in results]
         pcts = [r['sag_percent'] for r in results]
-        labels = [f"{k} lbs/in" for k in spring_rates_lbsin]
+        labels = [f"{k} N/mm" for k in spring_rates_nmm]
 
         colors = []
         for p in pcts:
@@ -544,9 +542,9 @@ def fork_compare():
         # Optimal zone lines
         ax.axhline(y=travel * 0.25, color='#4ecca3', linewidth=1, linestyle='--', alpha=0.5)
         ax.axhline(y=travel * 0.33, color='#4ecca3', linewidth=1, linestyle='--', alpha=0.5)
-        ax.fill_between(range(-1, len(spring_rates) + 1), travel * 0.25, travel * 0.33,
+        ax.fill_between(range(-1, len(spring_rates_nmm) + 1), travel * 0.25, travel * 0.33,
                         alpha=0.1, color='#4ecca3')
-        ax.text(len(spring_rates) - 0.5, travel * 0.29, 'Zona óptima (25-33%)',
+        ax.text(len(spring_rates_nmm) - 0.5, travel * 0.29, 'Zona óptima (25-33%)',
                 color='#4ecca3', fontsize=9, ha='right', va='center')
 
         # Sag values on bars
@@ -554,7 +552,7 @@ def fork_compare():
             ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 1,
                     f'{s:.0f}mm\n({p:.0f}%)', ha='center', va='bottom', color='#eee', fontsize=9)
 
-        ax.set_xlabel('Tasa del muelle (lbs/in por barra)')
+        ax.set_xlabel('Tasa del muelle (N/mm por barra)')
         ax.set_ylabel('Sag (mm)')
         ax.set_title(f'Comparación de muelles — {weight}kg, {preload}mm precarga')
         ax.set_ylim(0, max(sags) * 1.3 if max(sags) > 0 else travel)
