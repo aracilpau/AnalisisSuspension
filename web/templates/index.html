@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISC - Ingenier&iacute;a de Suspensi&oacute;n</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- LANDING PAGE -->
+        <div id="landing" class="view active">
+            <header class="landing-header">
+                <h1>ISC</h1>
+                <p>Herramientas de Ingenier&iacute;a de Suspensi&oacute;n &mdash; MotoStudent</p>
+            </header>
+
+            <button class="palette-fab" id="btn-palette" title="Cambiar paleta">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10a2.5 2.5 0 0 0 2.5-2.5c0-.61-.23-1.21-.64-1.67A.528.528 0 0 1 14.25 17c.28 0 .5.22.5.5 0 .67.56 1.5 1.25 1.5C19.55 19 22 15.87 22 12c0-5.52-4.48-10-10-10zm-5.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                </svg>
+            </button>
+            <div class="palette-dropdown hidden" id="palette-dropdown">
+                <h3>Elegir paleta</h3>
+                <div class="palette-list" id="palette-list"></div>
+            </div>
+
+            <div class="studies-grid">
+                <button class="study-card" data-study="leverage">
+                    <div class="study-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                            <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>
+                        </svg>
+                    </div>
+                    <h2>An&aacute;lisis de Suspensi&oacute;n</h2>
+                    <p>Leverage ratio, visualizaci&oacute;n de geometr&iacute;a, animaci&oacute;n y exportaci&oacute;n de datos</p>
+                    <span class="study-tag">Cinem&aacute;tica</span>
+                </button>
+
+                <button class="study-card" data-study="sag">
+                    <div class="study-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                            <path d="M20 6.83V20H6.83L20 6.83M22 2L2 22h20V2z"/>
+                        </svg>
+                    </div>
+                    <h2>Calculadora de Sag</h2>
+                    <p>Calcula el hundimiento est&aacute;tico de la suspensi&oacute;n seg&uacute;n peso, muelle y precarga</p>
+                    <span class="study-tag">Est&aacute;tica</span>
+                </button>
+
+                <button class="study-card" data-study="fork">
+                    <div class="study-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                            <path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+                        </svg>
+                    </div>
+                    <h2>Horquilla Delantera</h2>
+                    <p>Calcula el sag delantero, compara muelles y encuentra el setup &oacute;ptimo para tu horquilla</p>
+                    <span class="study-tag">&Ouml;hlins FGAM027</span>
+                </button>
+
+                <button class="study-card" data-study="concepts">
+                    <div class="study-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                        </svg>
+                    </div>
+                    <h2>Conceptos</h2>
+                    <p>Glosario de suspensi&oacute;n: qu&eacute; es cada cosa, c&oacute;mo funciona y c&oacute;mo afecta a tu moto</p>
+                    <span class="study-tag">Teor&iacute;a</span>
+                </button>
+
+                <div class="study-card study-card-soon">
+                    <div class="study-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h2>Pr&oacute;ximamente</h2>
+                    <p>M&aacute;s estudios en desarrollo...</p>
+                    <span class="study-tag">Pronto</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- STUDY: LEVERAGE RATIO -->
+        <div id="study-leverage" class="view">
+            <div class="study-topbar">
+                <button class="btn btn-back" id="back-leverage">&larr; Volver</button>
+                <h1>An&aacute;lisis de Suspensi&oacute;n</h1>
+                <span class="badge" id="lev-status-badge">Sin configurar</span>
+            </div>
+
+            <nav class="tabs">
+                <button class="tab active" data-section="lev-config">Geometr&iacute;a</button>
+                <button class="tab" data-section="lev-visualize">Visualizar</button>
+                <button class="tab" data-section="lev-animate">Animar</button>
+                <button class="tab" data-section="lev-analyze">Leverage Ratio</button>
+                <button class="tab" data-section="lev-calculate">Calcular LR</button>
+                <button class="tab" data-section="lev-export">Exportar</button>
+                <button class="tab" data-section="lev-guide">Gu&iacute;a</button>
+            </nav>
+
+            <!-- CONFIG -->
+            <section id="lev-config" class="section active">
+                <div class="card">
+                    <h2>Configuraci&oacute;n de Geometr&iacute;a</h2>
+                    <div class="preset-selector">
+                        <h3>Presets</h3>
+                        <div class="preset-grid" id="preset-grid"></div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <h3>Basculante <span class="tooltip-icon" data-tip="Brazo oscilante que conecta el pivote del chasis con el eje de la rueda trasera. El origen (0,0) es el pivote.">?</span></h3>
+                            <label>Longitud (mm) <span class="tooltip-icon" data-tip="Distancia desde el pivote (0,0) hasta el eje de la rueda trasera.">?</span>
+                                <input type="number" id="swingarm_length" value="600" step="1">
+                            </label>
+                            <label>&Aacute;ngulo inicial (&deg;) <span class="tooltip-icon" data-tip="Inclinaci&oacute;n del basculante respecto a la horizontal en reposo. Ej: 12&deg; = la rueda cae ligeramente bajo el pivote.">?</span>
+                                <input type="number" id="swingarm_angle" value="12" step="0.5">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <h3>Shock - Basculante <span class="tooltip-icon" data-tip="Punto donde el amortiguador se ancla al basculante. Coordenadas locales relativas al basculante horizontal.">?</span></h3>
+                            <label>Posici&oacute;n X (mm) <span class="tooltip-icon" data-tip="Distancia a lo largo del basculante desde el pivote. Ej: 200mm = a 1/3 del brazo.">?</span>
+                                <input type="number" id="shock_sw_x" value="200" step="1">
+                            </label>
+                            <label>Posici&oacute;n Y (mm) <span class="tooltip-icon" data-tip="Distancia perpendicular al basculante hacia arriba. Ej: 60mm por encima del brazo.">?</span>
+                                <input type="number" id="shock_sw_y" value="60" step="1">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <h3>Shock - Chasis <span class="tooltip-icon" data-tip="Punto fijo donde el amortiguador se ancla al chasis. Coordenadas globales respecto al pivote (0,0).">?</span></h3>
+                            <label>Posici&oacute;n X (mm) <span class="tooltip-icon" data-tip="Distancia horizontal desde el pivote. Positivo = hacia delante.">?</span>
+                                <input type="number" id="shock_ch_x" value="120" step="1">
+                            </label>
+                            <label>Posici&oacute;n Y (mm) <span class="tooltip-icon" data-tip="Distancia vertical desde el pivote. Positivo = hacia arriba.">?</span>
+                                <input type="number" id="shock_ch_y" value="250" step="1">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <h3>Rueda</h3>
+                            <label>Radio (mm) <span class="tooltip-icon" data-tip="Radio de la rueda trasera. 310mm t&iacute;pico para 17 pulgadas.">?</span>
+                                <input type="number" id="wheel_radius" value="310" step="1">
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg" id="btn-configure">Configurar Suspensi&oacute;n</button>
+                    <div class="result-message" id="config-result"></div>
+                </div>
+
+                <!-- SHOCK STROKE -->
+                <div class="card" id="stroke-card" style="display:none">
+                    <h2>Recorrido del amortiguador <span class="tooltip-icon" data-tip="Introduce el stroke (carrera) de tu amortiguador y la app calcula autom&aacute;ticamente el recorrido de rueda equivalente usando el LR de tu geometr&iacute;a.">?</span></h2>
+                    <div class="inline-form">
+                        <label>Stroke del shock (mm) <span class="tooltip-icon" data-tip="Carrera del amortiguador de metal a metal. Para el &Ouml;hlins S36DR1 de MotoStudent: 59mm.">?</span>
+                            <input type="number" id="shock-stroke" value="59" step="1" min="1">
+                        </label>
+                        <button class="btn btn-primary" id="btn-stroke-calc">Calcular recorrido rueda</button>
+                    </div>
+                    <div class="results-panel" id="stroke-results" style="display:none">
+                        <div class="stat-grid">
+                            <div class="stat-card"><span class="stat-label">Stroke Shock</span><span class="stat-value" id="stroke-shock-val">-</span></div>
+                            <div class="stat-card"><span class="stat-label">Recorrido Rueda</span><span class="stat-value" id="stroke-wheel-val">-</span></div>
+                            <div class="stat-card"><span class="stat-label">LR Medio</span><span class="stat-value" id="stroke-lr-val">-</span></div>
+                        </div>
+                        <p class="stroke-hint" id="stroke-hint"></p>
+                    </div>
+                </div>
+
+                <div class="card" id="summary-card" style="display:none">
+                    <h2>Resumen</h2>
+                    <div class="summary-grid" id="summary-content"></div>
+                </div>
+            </section>
+
+            <!-- VISUALIZE -->
+            <section id="lev-visualize" class="section">
+                <div class="card">
+                    <h2>Visualizar Geometr&iacute;a</h2>
+                    <div class="inline-form">
+                        <label>Desplazamiento rueda (mm) <span class="tooltip-icon" data-tip="Negativo = extensi&oacute;n, Positivo = compresi&oacute;n.">?</span>
+                            <input type="number" id="viz-displacement" value="0" step="1">
+                        </label>
+                        <button class="btn btn-primary" id="btn-visualize">Generar</button>
+                    </div>
+                    <div class="plot-container" id="viz-plot"></div>
+                </div>
+            </section>
+
+            <!-- ANIMATE -->
+            <section id="lev-animate" class="section">
+                <div class="card">
+                    <h2>Animaci&oacute;n de Suspensi&oacute;n</h2>
+                    <div class="inline-form">
+                        <label>M&iacute;nimo (mm)
+                            <input type="number" id="anim-min" value="-50" step="1">
+                        </label>
+                        <label>M&aacute;ximo (mm)
+                            <input type="number" id="anim-max" value="50" step="1">
+                        </label>
+                        <button class="btn btn-primary" id="btn-animate">Generar Animaci&oacute;n</button>
+                    </div>
+                    <div class="plot-container" id="anim-plot"></div>
+                </div>
+            </section>
+
+            <!-- ANALYZE -->
+            <section id="lev-analyze" class="section">
+                <div class="card">
+                    <h2>An&aacute;lisis de Leverage Ratio <span class="tooltip-icon" data-tip="El LR indica cu&aacute;nto se mueve la rueda por cada mm que se comprime el amortiguador. Si aumenta en compresi&oacute;n es PROGRESIVO.">?</span></h2>
+                    <div class="inline-form">
+                        <label>M&iacute;nimo (mm)
+                            <input type="number" id="analyze-min" value="0" step="1">
+                        </label>
+                        <label>M&aacute;ximo (mm) <span class="tooltip-icon" data-tip="Si has calculado el recorrido de rueda desde el stroke, este valor se rellena autom&aacute;ticamente.">?</span>
+                            <input type="number" id="analyze-max" value="50" step="1">
+                        </label>
+                        <button class="btn btn-primary" id="btn-analyze">Analizar</button>
+                    </div>
+                    <div class="results-panel" id="analyze-results" style="display:none">
+                        <div class="stat-grid">
+                            <div class="stat-card"><span class="stat-label">LR Inicial</span><span class="stat-value" id="lr-initial">-</span></div>
+                            <div class="stat-card"><span class="stat-label">LR Promedio</span><span class="stat-value" id="lr-average">-</span></div>
+                            <div class="stat-card"><span class="stat-label">LR M&aacute;x</span><span class="stat-value" id="lr-max">-</span></div>
+                            <div class="stat-card"><span class="stat-label">LR M&iacute;n</span><span class="stat-value" id="lr-min">-</span></div>
+                            <div class="stat-card"><span class="stat-label">Progresividad</span><span class="stat-value" id="lr-progression">-</span></div>
+                            <div class="stat-card"><span class="stat-label">Tipo</span><span class="stat-value" id="lr-type">-</span></div>
+                        </div>
+                    </div>
+                    <div class="plot-container" id="analyze-plot"></div>
+                </div>
+            </section>
+
+            <!-- CALCULATE -->
+            <section id="lev-calculate" class="section">
+                <div class="card">
+                    <h2>Calcular LR en Posici&oacute;n</h2>
+                    <div class="inline-form">
+                        <label>Desplazamiento rueda (mm)
+                            <input type="number" id="calc-displacement" value="0" step="0.5">
+                        </label>
+                        <button class="btn btn-primary" id="btn-calculate">Calcular</button>
+                    </div>
+                    <div class="results-panel" id="calc-results" style="display:none">
+                        <div class="stat-grid">
+                            <div class="stat-card"><span class="stat-label">Desp. Rueda</span><span class="stat-value" id="calc-wheel">-</span></div>
+                            <div class="stat-card"><span class="stat-label">Desp. Shock</span><span class="stat-value" id="calc-shock">-</span></div>
+                            <div class="stat-card"><span class="stat-label">Leverage Ratio</span><span class="stat-value" id="calc-lr">-</span></div>
+                            <div class="stat-card"><span class="stat-label">Long. Shock</span><span class="stat-value" id="calc-shock-len">-</span></div>
+                            <div class="stat-card"><span class="stat-label">Long. Inicial</span><span class="stat-value" id="calc-initial-len">-</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXPORT -->
+            <section id="lev-export" class="section">
+                <div class="card">
+                    <h2>Exportar Datos a CSV</h2>
+                    <div class="inline-form">
+                        <label>M&iacute;nimo (mm)
+                            <input type="number" id="export-min" value="-50" step="1">
+                        </label>
+                        <label>M&aacute;ximo (mm)
+                            <input type="number" id="export-max" value="50" step="1">
+                        </label>
+                        <label>Puntos
+                            <input type="number" id="export-points" value="200" step="10" min="10">
+                        </label>
+                        <button class="btn btn-primary" id="btn-export">Descargar CSV</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GUIDE -->
+            <section id="lev-guide" class="section">
+                <div class="card guide-card">
+                    <h2>Qu&eacute; es el Leverage Ratio</h2>
+                    <p>El <strong>Leverage Ratio (LR)</strong> es la relaci&oacute;n entre cu&aacute;nto se mueve la rueda y cu&aacute;nto se comprime el amortiguador:</p>
+                    <div class="guide-formula">LR = desplazamiento rueda / desplazamiento shock</div>
+                    <p>Si LR = 2, por cada 1mm que se comprime el amortiguador, la rueda sube 2mm.</p>
+                </div>
+                <div class="card guide-card">
+                    <h2>C&oacute;mo afecta a la moto</h2>
+                    <div class="guide-grid">
+                        <div class="guide-block">
+                            <h3>LR Alto (ej. 3.0)</h3>
+                            <ul>
+                                <li>Suspensi&oacute;n m&aacute;s <strong>suave</strong></li>
+                                <li>La rueda se mueve mucho pero el shock poco</li>
+                                <li>M&aacute;s recorrido para el mismo amortiguador</li>
+                                <li>Menos control en frenadas fuertes</li>
+                            </ul>
+                        </div>
+                        <div class="guide-block">
+                            <h3>LR Bajo (ej. 1.5)</h3>
+                            <ul>
+                                <li>Suspensi&oacute;n m&aacute;s <strong>firme</strong></li>
+                                <li>Mejor control y estabilidad</li>
+                                <li>Menos recorrido total de rueda</li>
+                                <li>Mejor respuesta en curva</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card guide-card">
+                    <h2>Progresividad</h2>
+                    <div class="guide-grid three-col">
+                        <div class="guide-block block-green">
+                            <h3>Progresivo</h3>
+                            <p>El LR <strong>aumenta</strong> en compresi&oacute;n. Empieza suave y se endurece al final.</p>
+                            <span class="guide-verdict">Lo ideal para competici&oacute;n</span>
+                        </div>
+                        <div class="guide-block block-yellow">
+                            <h3>Lineal</h3>
+                            <p>El LR se mantiene <strong>constante</strong>. Predecible pero sin ventajas.</p>
+                            <span class="guide-verdict">Aceptable</span>
+                        </div>
+                        <div class="guide-block block-red">
+                            <h3>Regresivo</h3>
+                            <p>El LR <strong>disminuye</strong>. Se ablanda y facilita tocar fondo.</p>
+                            <span class="guide-verdict">Evitar</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card guide-card">
+                    <h2>Aplicaci&oacute;n en MotoStudent</h2>
+                    <p>Moviendo los anclajes del amortiguador pod&eacute;is cambiar la curva de LR <strong>antes de fabricar nada</strong>. Objetivo: sistema progresivo con <strong>5-15% de progresividad</strong>.</p>
+                    <div class="guide-steps">
+                        <div class="guide-step"><span class="step-num">1</span><span>Configura la geometr&iacute;a con las medidas de tu basculante</span></div>
+                        <div class="guide-step"><span class="step-num">2</span><span>Analiza el Leverage Ratio para ver la progresividad</span></div>
+                        <div class="guide-step"><span class="step-num">3</span><span>Modifica los anclajes y compara hasta encontrar el setup &oacute;ptimo</span></div>
+                        <div class="guide-step"><span class="step-num">4</span><span>Exporta los datos a CSV para documentaci&oacute;n</span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- STUDY: SAG CALCULATOR -->
+        <div id="study-sag" class="view">
+            <div class="study-topbar">
+                <button class="btn btn-back" id="back-sag">&larr; Volver</button>
+                <h1>Calculadora de Sag</h1>
+                <span class="badge" id="sag-status-badge">Sin configurar</span>
+            </div>
+
+            <nav class="tabs" id="sag-tabs">
+                <button class="tab active" data-section="sag-config">Configuraci&oacute;n</button>
+                <button class="tab" data-section="sag-results">Resultados</button>
+                <button class="tab" data-section="sag-guide">Gu&iacute;a</button>
+            </nav>
+
+            <!-- SAG CONFIG -->
+            <section id="sag-config" class="section active">
+                <div class="card">
+                    <h2>Geometr&iacute;a de la suspensi&oacute;n</h2>
+                    <div class="preset-selector">
+                        <h3>Presets</h3>
+                        <div class="preset-grid" id="sag-preset-grid"></div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <h3>Basculante</h3>
+                            <label>Longitud (mm)
+                                <input type="number" id="sag-swingarm_length" value="600" step="1">
+                            </label>
+                            <label>&Aacute;ngulo inicial (&deg;)
+                                <input type="number" id="sag-swingarm_angle" value="12" step="0.5">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <h3>Shock - Basculante</h3>
+                            <label>Posici&oacute;n X (mm)
+                                <input type="number" id="sag-shock_sw_x" value="200" step="1">
+                            </label>
+                            <label>Posici&oacute;n Y (mm)
+                                <input type="number" id="sag-shock_sw_y" value="60" step="1">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <h3>Shock - Chasis</h3>
+                            <label>Posici&oacute;n X (mm)
+                                <input type="number" id="sag-shock_ch_x" value="120" step="1">
+                            </label>
+                            <label>Posici&oacute;n Y (mm)
+                                <input type="number" id="sag-shock_ch_y" value="250" step="1">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <h3>Rueda</h3>
+                            <label>Radio (mm)
+                                <input type="number" id="sag-wheel_radius" value="310" step="1">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Par&aacute;metros del muelle y peso</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <h3>Muelle <span class="tooltip-icon" data-tip="Caracter&iacute;sticas del muelle del amortiguador trasero.">?</span></h3>
+                            <label>Tasa del muelle (N/mm) <span class="tooltip-icon" data-tip="Rigidez del muelle. Cu&aacute;ntos Newtons necesitas por cada mm de compresi&oacute;n. T&iacute;pico: 40-120 N/mm.">?</span>
+                                <input type="number" id="sag-spring_rate" value="80" step="1" min="1">
+                            </label>
+                            <label>Precarga (mm) <span class="tooltip-icon" data-tip="Cu&aacute;ntos mm est&aacute; precomprimido el muelle al montarlo. Se ajusta con la tuerca de precarga.">?</span>
+                                <input type="number" id="sag-preload" value="10" step="0.5" min="0">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <h3>Peso <span class="tooltip-icon" data-tip="Peso que carga sobre la rueda trasera. Normalmente ~60% del peso total.">?</span></h3>
+                            <label>Peso sobre rueda trasera (kg) <span class="tooltip-icon" data-tip="Para free sag: solo peso de la moto sobre rueda trasera. Para rider sag: moto + piloto.">?</span>
+                                <input type="number" id="sag-weight" value="100" step="1" min="1">
+                            </label>
+                            <label>Stroke shock (mm) <span class="tooltip-icon" data-tip="Carrera del amortiguador de metal a metal. &Ouml;hlins S36DR1: 59mm. El recorrido de rueda se calcula autom&aacute;ticamente.">?</span>
+                                <input type="number" id="sag-shock_stroke" value="59" step="1" min="1">
+                            </label>
+                            <input type="hidden" id="sag-max_travel" value="120">
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg" id="btn-sag-calculate">Calcular Sag</button>
+                    <div class="result-message" id="sag-config-result"></div>
+                </div>
+            </section>
+
+            <!-- SAG RESULTS -->
+            <section id="sag-results" class="section">
+                <div class="card">
+                    <h2>Resultados del Sag</h2>
+                    <div id="sag-results-content">
+                        <p class="text-muted">Configura los par&aacute;metros y pulsa "Calcular Sag" primero.</p>
+                    </div>
+                </div>
+                <div class="plot-container" id="sag-plot"></div>
+            </section>
+
+            <!-- SAG GUIDE -->
+            <section id="sag-guide" class="section">
+                <div class="card guide-card">
+                    <h2>Qu&eacute; es el Sag</h2>
+                    <p>El <strong>sag</strong> es cu&aacute;nto se hunde la suspensi&oacute;n bajo un peso est&aacute;tico (sin movimiento). Es el punto de equilibrio donde la fuerza del muelle iguala al peso.</p>
+                    <div class="guide-grid">
+                        <div class="guide-block block-green">
+                            <h3>Free Sag</h3>
+                            <p>Hundimiento solo con el peso de la moto, sin piloto. Debe ser <strong>5-10%</strong> del recorrido total.</p>
+                            <span class="guide-verdict">0mm = muelle demasiado duro</span>
+                        </div>
+                        <div class="guide-block block-yellow">
+                            <h3>Rider Sag</h3>
+                            <p>Hundimiento con moto + piloto en posici&oacute;n normal. Debe ser <strong>25-33%</strong> del recorrido total.</p>
+                            <span class="guide-verdict">El ajuste m&aacute;s importante</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card guide-card">
+                    <h2>Por qu&eacute; importa</h2>
+                    <div class="guide-grid three-col">
+                        <div class="guide-block">
+                            <h3>Sag demasiado bajo</h3>
+                            <ul>
+                                <li>Muelle <strong>muy duro</strong> o mucha precarga</li>
+                                <li>La rueda no sigue bien el terreno</li>
+                                <li>Pierde tracci&oacute;n en baches</li>
+                                <li>Moto alta e inestable</li>
+                            </ul>
+                        </div>
+                        <div class="guide-block block-green">
+                            <h3>Sag correcto</h3>
+                            <ul>
+                                <li>La suspensi&oacute;n trabaja en su <strong>rango &oacute;ptimo</strong></li>
+                                <li>Puede extenderse y comprimirse</li>
+                                <li>M&aacute;xima tracci&oacute;n y control</li>
+                                <li>Geometr&iacute;a de direcci&oacute;n correcta</li>
+                            </ul>
+                        </div>
+                        <div class="guide-block">
+                            <h3>Sag demasiado alto</h3>
+                            <ul>
+                                <li>Muelle <strong>muy blando</strong></li>
+                                <li>F&aacute;cil tocar fondo</li>
+                                <li>Moto baja y perezosa</li>
+                                <li>Direcci&oacute;n lenta</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card guide-card">
+                    <h2>C&oacute;mo ajustar</h2>
+                    <div class="guide-steps">
+                        <div class="guide-step"><span class="step-num">1</span><span>Introduce la geometr&iacute;a, tasa del muelle y peso</span></div>
+                        <div class="guide-step"><span class="step-num">2</span><span>Calcula primero el <strong>free sag</strong> (solo peso moto). Si es 0, el muelle es demasiado duro</span></div>
+                        <div class="guide-step"><span class="step-num">3</span><span>Calcula el <strong>rider sag</strong> (moto + piloto). Debe ser 25-33% del recorrido</span></div>
+                        <div class="guide-step"><span class="step-num">4</span><span>Ajusta la <strong>precarga</strong> para mover el sag sin cambiar la rigidez</span></div>
+                        <div class="guide-step"><span class="step-num">5</span><span>Si con precarga no llegas, necesitas <strong>cambiar la tasa del muelle</strong></span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- STUDY: FORK -->
+        <div id="study-fork" class="view">
+            <div class="study-topbar">
+                <button class="btn btn-back" id="back-fork">&larr; Volver</button>
+                <h1>Horquilla Delantera &mdash; &Ouml;hlins FGAM027</h1>
+            </div>
+
+            <nav class="tabs" id="fork-tabs">
+                <button class="tab active" data-section="fork-config">Configuraci&oacute;n</button>
+                <button class="tab" data-section="fork-compare">Comparar Muelles</button>
+                <button class="tab" data-section="fork-guide">Gu&iacute;a</button>
+            </nav>
+
+            <!-- FORK CONFIG -->
+            <section id="fork-config" class="section active">
+                <div class="card">
+                    <h2>Datos de la horquilla</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <h3>Horquilla</h3>
+                            <label>Recorrido (mm) <span class="tooltip-icon" data-tip="Carrera de la horquilla de metal a metal. FGAM027: 110mm.">?</span>
+                                <input type="number" id="fork-travel" value="110" step="1" min="1">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <h3>Muelle <span class="tooltip-icon" data-tip="En la horquilla hay DOS muelles (uno por barra). La tasa es por muelle. La fuerza total es el doble.">?</span></h3>
+                            <label>Tasa del muelle (N/mm) <span class="tooltip-icon" data-tip="Rigidez de CADA muelle. Disponibles: 35/40/45/50/55/60/65 N/mm.">?</span>
+                                <select id="fork-spring_rate">
+                                    <option value="35">35 N/mm</option>
+                                    <option value="40">40 N/mm</option>
+                                    <option value="45">45 N/mm</option>
+                                    <option value="50" selected>50 N/mm</option>
+                                    <option value="55">55 N/mm</option>
+                                    <option value="60">60 N/mm</option>
+                                    <option value="65">65 N/mm</option>
+                                </select>
+                            </label>
+                            <label>Precarga (mm) <span class="tooltip-icon" data-tip="Precompresi&oacute;n del muelle al montarlo.">?</span>
+                                <input type="number" id="fork-preload" value="5" step="0.5" min="0">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <h3>Peso</h3>
+                            <label>Peso sobre rueda delantera (kg) <span class="tooltip-icon" data-tip="Para rider sag: peso de moto + piloto que carga sobre la delantera. Normalmente 40-50% del total.">?</span>
+                                <input type="number" id="fork-weight" value="95" step="1" min="1">
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg" id="btn-fork-calculate">Calcular Sag Delantero</button>
+                    <div class="result-message" id="fork-config-result"></div>
+                </div>
+
+                <div id="fork-results-content" style="display:none"></div>
+            </section>
+
+            <!-- FORK COMPARE -->
+            <section id="fork-compare" class="section">
+                <div class="card">
+                    <h2>Comparar todos los muelles</h2>
+                    <p class="text-muted" style="margin-bottom:16px">Calcula el sag para todos los muelles disponibles con tu peso y precarga actual.</p>
+                    <div class="inline-form">
+                        <label>Peso delantero (kg)
+                            <input type="number" id="fork-compare-weight" value="95" step="1" min="1">
+                        </label>
+                        <label>Precarga (mm)
+                            <input type="number" id="fork-compare-preload" value="5" step="0.5" min="0">
+                        </label>
+                        <label>Recorrido (mm)
+                            <input type="number" id="fork-compare-travel" value="110" step="1" min="1">
+                        </label>
+                        <button class="btn btn-primary" id="btn-fork-compare">Comparar</button>
+                    </div>
+                    <div id="fork-compare-results"></div>
+                </div>
+            </section>
+
+            <!-- FORK GUIDE -->
+            <section id="fork-guide" class="section">
+                <div class="card guide-card">
+                    <h2>Horquilla delantera</h2>
+                    <p>La horquilla es un sistema <strong>directo</strong> (LR = 1): cada mm que comprime la horquilla es 1mm de recorrido de rueda. Esto simplifica mucho el c&aacute;lculo.</p>
+                    <p>La FGAM027 tiene <strong>dos barras</strong>, cada una con su muelle. La fuerza total es la suma de ambos muelles (el doble de la tasa individual).</p>
+                </div>
+                <div class="card guide-card">
+                    <h2>El problema: la moto hunde delante</h2>
+                    <p>Si la moto "se echa delante", las causas pueden ser:</p>
+                    <div class="guide-grid">
+                        <div class="guide-block block-red">
+                            <h3>Muelle muy blando</h3>
+                            <ul>
+                                <li>Sag delantero excesivo (&gt;33%)</li>
+                                <li>Soluci&oacute;n: <strong>muelle m&aacute;s duro</strong></li>
+                            </ul>
+                        </div>
+                        <div class="guide-block block-yellow">
+                            <h3>Poca precarga</h3>
+                            <ul>
+                                <li>El muelle correcto pero mal ajustado</li>
+                                <li>Soluci&oacute;n: <strong>m&aacute;s precarga</strong></li>
+                            </ul>
+                        </div>
+                        <div class="guide-block block-green">
+                            <h3>Amortiguaci&oacute;n baja</h3>
+                            <ul>
+                                <li>La hidr&aacute;ulica no frena la compresi&oacute;n</li>
+                                <li>Soluci&oacute;n: <strong>cerrar compresi&oacute;n</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card guide-card">
+                    <h2>Sag objetivo</h2>
+                    <div class="guide-steps">
+                        <div class="guide-step"><span class="step-num">1</span><span><strong>Free sag</strong> (solo moto): 5-10% del recorrido = 5.5 - 11mm</span></div>
+                        <div class="guide-step"><span class="step-num">2</span><span><strong>Rider sag</strong> (moto + piloto): 25-33% = 27.5 - 36mm</span></div>
+                        <div class="guide-step"><span class="step-num">3</span><span>Si el rider sag es &gt;33%, sube la precarga. Si no basta, sube de muelle</span></div>
+                        <div class="guide-step"><span class="step-num">4</span><span>Usa "Comparar muelles" para ver qu&eacute; muelle os da el sag correcto</span></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- STUDY: CONCEPTOS -->
+        <div id="study-concepts" class="view">
+            <div class="study-topbar">
+                <button class="btn btn-back">&larr; Volver</button>
+                <h1>Conceptos de Suspensi&oacute;n</h1>
+            </div>
+
+            <nav class="tabs">
+                <button class="tab active" data-section="concepts-basics">B&aacute;sicos</button>
+                <button class="tab" data-section="concepts-spring">Muelle</button>
+                <button class="tab" data-section="concepts-damper">Amortiguador</button>
+                <button class="tab" data-section="concepts-setup">Setup</button>
+                <button class="tab" data-section="concepts-geometry">Geometr&iacute;a</button>
+            </nav>
+
+            <!-- BASICS -->
+            <section id="concepts-basics" class="section active">
+                <div class="card guide-card">
+                    <h2>Las dos funciones de la suspensi&oacute;n</h2>
+                    <p>Una suspensi&oacute;n de moto tiene <strong>dos componentes</strong> que hacen cosas diferentes:</p>
+                    <div class="guide-grid">
+                        <div class="guide-block block-green">
+                            <h3>Muelle (Spring)</h3>
+                            <ul>
+                                <li><strong>Soporta el peso</strong> de la moto y el piloto</li>
+                                <li>Determina la <strong>posici&oacute;n est&aacute;tica</strong> (sag)</li>
+                                <li>Almacena energ&iacute;a y la devuelve (rebote)</li>
+                                <li>Su rigidez se mide en <strong>N/mm</strong></li>
+                            </ul>
+                        </div>
+                        <div class="guide-block block-yellow">
+                            <h3>Hidr&aacute;ulico (Damper)</h3>
+                            <ul>
+                                <li><strong>Controla la velocidad</strong> del movimiento</li>
+                                <li>Frena la compresi&oacute;n y el rebote</li>
+                                <li>Convierte energ&iacute;a de movimiento en <strong>calor</strong></li>
+                                <li>Funciona con aceite pasando por orificios</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p style="margin-top:16px"><strong>Analog&iacute;a:</strong> imagina saltar en una cama el&aacute;stica. El muelle es la tela el&aacute;stica (te sostiene y rebota). El hidr&aacute;ulico ser&iacute;a como hacerlo en una piscina de miel: la tela sigue ah&iacute;, pero el movimiento es m&aacute;s lento y controlado.</p>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Shock (Amortiguador trasero)</h2>
+                    <p>El <strong>shock</strong> es el componente que conecta el basculante al chasis en la parte trasera. Dentro tiene:</p>
+                    <div class="guide-steps">
+                        <div class="guide-step"><span class="step-num">1</span><span><strong>Un muelle helicoidal</strong> (la espiral met&aacute;lica que ves por fuera) que soporta el peso</span></div>
+                        <div class="guide-step"><span class="step-num">2</span><span><strong>Un cuerpo hidr&aacute;ulico</strong> (el cilindro interno) con aceite que controla la velocidad</span></div>
+                        <div class="guide-step"><span class="step-num">3</span><span><strong>Un dep&oacute;sito</strong> (en shocks de gama alta) para compensar el volumen del v&aacute;stago</span></div>
+                    </div>
+                    <p style="margin-top:12px">En nuestro caso usamos un <strong>&Ouml;hlins S36DR1</strong>: 278mm libre, 59mm de stroke (recorrido).</p>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Horquilla (Fork)</h2>
+                    <p>La <strong>horquilla</strong> es la suspensi&oacute;n delantera. Son las dos barras que sujetan la rueda delantera.</p>
+                    <ul>
+                        <li>Es un <strong>sistema directo</strong>: 1mm de compresi&oacute;n de horquilla = 1mm de movimiento de rueda (LR = 1)</li>
+                        <li>Tiene <strong>dos barras</strong>, cada una con su muelle &rarr; la fuerza total es el <strong>doble</strong></li>
+                        <li>Dentro de cada barra hay aceite para la amortiguaci&oacute;n hidr&aacute;ulica</li>
+                    </ul>
+                    <p style="margin-top:12px">Nuestra <strong>&Ouml;hlins FGAM027</strong>: 110mm de recorrido, muelles de 35 a 65 N/mm.</p>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Stroke (Recorrido)</h2>
+                    <p>El <strong>stroke</strong> es la distancia m&aacute;xima que puede comprimirse un amortiguador o una horquilla, de totalmente extendido a totalmente comprimido.</p>
+                    <div class="guide-grid">
+                        <div class="guide-block">
+                            <h3>Shock trasero</h3>
+                            <p>Stroke = <strong>59mm</strong> (&Ouml;hlins S36DR1)</p>
+                            <p>Pero la rueda se mueve m&aacute;s que esto gracias al leverage ratio del basculante.</p>
+                        </div>
+                        <div class="guide-block">
+                            <h3>Horquilla</h3>
+                            <p>Stroke = <strong>110mm</strong> (&Ouml;hlins FGAM027)</p>
+                            <p>Como LR = 1, la rueda tambi&eacute;n se mueve 110mm.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SPRING -->
+            <section id="concepts-spring" class="section">
+                <div class="card guide-card">
+                    <h2>Tasa del muelle (Spring Rate) &mdash; K</h2>
+                    <p>La <strong>tasa</strong> o <strong>K</strong> es cu&aacute;nta fuerza necesitas para comprimir el muelle 1mm. Se mide en <strong>N/mm</strong> (o kN/m, que es lo mismo).</p>
+                    <div class="guide-formula">Fuerza = K &times; compresi&oacute;n</div>
+                    <p>Un muelle de <strong>60 N/mm</strong> necesita 60 Newtons para comprimirlo 1mm, 600N para 10mm, etc.</p>
+                    <div class="guide-grid">
+                        <div class="guide-block block-green">
+                            <h3>Muelle duro (K alta)</h3>
+                            <ul>
+                                <li>Menos sag</li>
+                                <li>Menos hundimiento en frenada</li>
+                                <li>Peor absorci&oacute;n de baches</li>
+                                <li>Piloto pesado o circuito liso</li>
+                            </ul>
+                        </div>
+                        <div class="guide-block block-red">
+                            <h3>Muelle blando (K baja)</h3>
+                            <ul>
+                                <li>M&aacute;s sag</li>
+                                <li>Mejor absorci&oacute;n de baches</li>
+                                <li>Riesgo de tocar fondo en frenada</li>
+                                <li>Piloto ligero o terreno irregular</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Precarga (Preload)</h2>
+                    <p>La <strong>precarga</strong> es la compresi&oacute;n inicial que le das al muelle <strong>antes de que soporte ning&uacute;n peso</strong>. Se mide en mm.</p>
+                    <div class="guide-formula">Fuerza inicial = K &times; precarga</div>
+                    <p>Con un muelle de 60 N/mm y 10mm de precarga, el muelle ya est&aacute; empujando con <strong>600N</strong> antes de que te sientes en la moto.</p>
+                    <div class="guide-grid three-col">
+                        <div class="guide-block block-green">
+                            <h3>Qu&eacute; hace</h3>
+                            <p>Ajusta la <strong>posici&oacute;n de reposo</strong> de la suspensi&oacute;n (el sag). M&aacute;s precarga = menos sag.</p>
+                        </div>
+                        <div class="guide-block block-yellow">
+                            <h3>Qu&eacute; NO hace</h3>
+                            <p><strong>No cambia la rigidez</strong> del muelle. Solo mueve el punto de partida. La K sigue siendo la misma.</p>
+                        </div>
+                        <div class="guide-block block-red">
+                            <h3>Error com&uacute;n</h3>
+                            <p>A&ntilde;adir mucha precarga para compensar un muelle blando. Esto empeora la absorci&oacute;n sin arreglar el problema.</p>
+                        </div>
+                    </div>
+                    <p style="margin-top:16px"><strong>Regla:</strong> la precarga sirve para <em>ajustar</em> el sag, no para <em>endurecer</em> la suspensi&oacute;n. Si necesitas mucha precarga, necesitas otro muelle.</p>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Wheel Rate (Tasa en rueda)</h2>
+                    <p>La <strong>wheel rate</strong> es la rigidez que siente la rueda, no la del muelle directamente. La relaci&oacute;n depende del leverage ratio:</p>
+                    <div class="guide-formula">Wheel Rate = K / LR&sup2;</div>
+                    <p>Si tienes un muelle de 80 N/mm y un LR de 2.8, la rueda siente: 80 / 2.8&sup2; = <strong>10.2 N/mm</strong>. Por eso el LR es tan importante: multiplica o divide la rigidez que percibe la rueda.</p>
+                    <p style="margin-top:8px">En la <strong>horquilla</strong> (LR = 1): wheel rate = 2 &times; K (porque hay dos muelles). Simple.</p>
+                </div>
+            </section>
+
+            <!-- DAMPER -->
+            <section id="concepts-damper" class="section">
+                <div class="card guide-card">
+                    <h2>Amortiguaci&oacute;n hidr&aacute;ulica</h2>
+                    <p>El hidr&aacute;ulico usa <strong>aceite forzado a pasar por orificios</strong>. Cuanto m&aacute;s r&aacute;pido se mueve, m&aacute;s resiste. Tiene dos ajustes independientes:</p>
+                    <div class="guide-grid">
+                        <div class="guide-block block-green">
+                            <h3>Compresi&oacute;n (Compression)</h3>
+                            <ul>
+                                <li>Controla la velocidad al <strong>hundirse</strong></li>
+                                <li>Afecta a frenadas, baches, transferencia de peso</li>
+                                <li>M&aacute;s compresi&oacute;n = m&aacute;s resistencia a hundirse</li>
+                                <li>Giros de clic: abrir = m&aacute;s suave, cerrar = m&aacute;s duro</li>
+                            </ul>
+                        </div>
+                        <div class="guide-block block-yellow">
+                            <h3>Rebote (Rebound)</h3>
+                            <ul>
+                                <li>Controla la velocidad al <strong>extenderse</strong></li>
+                                <li>Afecta a la estabilidad despu&eacute;s de un bache o frenada</li>
+                                <li>Poco rebote = la moto "rebota" descontrolada</li>
+                                <li>Mucho rebote = la suspensi&oacute;n no recupera a tiempo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Baja y alta velocidad</h2>
+                    <p>En shocks de gama alta, la compresi&oacute;n se divide en <strong>dos circuitos</strong>:</p>
+                    <div class="guide-grid">
+                        <div class="guide-block">
+                            <h3>Baja velocidad (Low Speed)</h3>
+                            <ul>
+                                <li>Movimientos <strong>lentos</strong>: frenada, aceleraci&oacute;n, cambio de direcci&oacute;n</li>
+                                <li>Es lo que m&aacute;s notas en pilotaje normal</li>
+                                <li>Ajustable con clics</li>
+                            </ul>
+                        </div>
+                        <div class="guide-block">
+                            <h3>Alta velocidad (High Speed)</h3>
+                            <ul>
+                                <li>Impactos <strong>r&aacute;pidos</strong>: baches, pianos, saltos</li>
+                                <li>Debe ser m&aacute;s suave para absorber el golpe</li>
+                                <li>No tiene nada que ver con la velocidad de la moto</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p style="margin-top:12px"><strong>Clave:</strong> "alta/baja velocidad" se refiere a la velocidad del <em>v&aacute;stago del amortiguador</em>, no a la velocidad de la moto. Un bache a 30 km/h es alta velocidad de amortiguador.</p>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Aceite</h2>
+                    <p>El aceite dentro del amortiguador tiene una <strong>viscosidad</strong> que afecta a la amortiguaci&oacute;n base:</p>
+                    <ul>
+                        <li><strong>Aceite m&aacute;s viscoso</strong> (ej. 7.5W) &rarr; m&aacute;s amortiguaci&oacute;n general</li>
+                        <li><strong>Aceite menos viscoso</strong> (ej. 2.5W) &rarr; suspensi&oacute;n m&aacute;s libre</li>
+                        <li>El aceite pierde propiedades con el calor &rarr; carreras largas = p&eacute;rdida de rendimiento (fade)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SETUP -->
+            <section id="concepts-setup" class="section">
+                <div class="card guide-card">
+                    <h2>Sag</h2>
+                    <p>El <strong>sag</strong> es cu&aacute;nto se hunde la suspensi&oacute;n bajo el peso est&aacute;tico (sin moverse). Se expresa como <strong>porcentaje del recorrido total</strong>.</p>
+                    <div class="guide-grid three-col">
+                        <div class="guide-block">
+                            <h3>Free sag</h3>
+                            <p>Solo peso de la moto, sin piloto.</p>
+                            <p>Objetivo: <strong>5-10%</strong></p>
+                        </div>
+                        <div class="guide-block block-green">
+                            <h3>Rider sag</h3>
+                            <p>Moto + piloto con equipo.</p>
+                            <p>Objetivo: <strong>25-33%</strong></p>
+                        </div>
+                        <div class="guide-block">
+                            <h3>Si no cuadra</h3>
+                            <p>Rider sag OK pero free sag &gt;15% &rarr; <strong>muelle incorrecto</strong></p>
+                        </div>
+                    </div>
+                    <p style="margin-top:16px"><strong>&iquest;Por qu&eacute; importa?</strong> El sag determina la posici&oacute;n de trabajo de la suspensi&oacute;n. Con el sag correcto, la suspensi&oacute;n puede tanto comprimirse (baches, frenada) como extenderse (rebote, aceleraci&oacute;n). Es el punto de partida de todo setup.</p>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Balance delantero/trasero</h2>
+                    <p>El <strong>equilibrio de sag</strong> entre ejes afecta a c&oacute;mo se comporta la moto:</p>
+                    <div class="guide-grid">
+                        <div class="guide-block block-red">
+                            <h3>Delantero muy hundido</h3>
+                            <ul>
+                                <li>Moto "echada hacia delante"</li>
+                                <li>Direcci&oacute;n pesada o nerviosa</li>
+                                <li>Poca confianza en frenada</li>
+                                <li><strong>Soluci&oacute;n:</strong> muelle delantero m&aacute;s duro o m&aacute;s precarga</li>
+                            </ul>
+                        </div>
+                        <div class="guide-block block-yellow">
+                            <h3>Trasero muy hundido</h3>
+                            <ul>
+                                <li>Moto "sentada" o con el morro alto</li>
+                                <li>Direcci&oacute;n lenta</li>
+                                <li>Dificultad para meter la moto en curva</li>
+                                <li><strong>Soluci&oacute;n:</strong> muelle trasero m&aacute;s duro o m&aacute;s precarga</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Orden de ajuste</h2>
+                    <p>Siempre sigue este orden para configurar la suspensi&oacute;n:</p>
+                    <div class="guide-steps">
+                        <div class="guide-step"><span class="step-num">1</span><span><strong>Elige el muelle correcto</strong> &mdash; el que d&eacute; un rider sag del 25-33%. Si no hay muelle que cuadre, el setup es imposible de arreglar con clics.</span></div>
+                        <div class="guide-step"><span class="step-num">2</span><span><strong>Ajusta la precarga</strong> &mdash; afina el sag dentro del rango &oacute;ptimo. Pocos mm de precarga bastan normalmente.</span></div>
+                        <div class="guide-step"><span class="step-num">3</span><span><strong>Ajusta el rebote</strong> &mdash; empuja la moto hacia abajo y su&eacute;ltala. Debe subir de forma controlada, sin rebotar. Empieza totalmente cerrado y ve abriendo.</span></div>
+                        <div class="guide-step"><span class="step-num">4</span><span><strong>Ajusta la compresi&oacute;n</strong> &mdash; prueba en pista. Si hunde mucho en frenada, cierra compresi&oacute;n. Si est&aacute; muy dura en baches, abre.</span></div>
+                        <div class="guide-step"><span class="step-num">5</span><span><strong>Itera</strong> &mdash; cambia <strong>un solo par&aacute;metro</strong> a la vez y prueba. Nunca cambies todo de golpe.</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GEOMETRY -->
+            <section id="concepts-geometry" class="section">
+                <div class="card guide-card">
+                    <h2>Leverage Ratio (LR)</h2>
+                    <p>La relaci&oacute;n entre cu&aacute;nto se mueve la <strong>rueda</strong> y cu&aacute;nto se comprime el <strong>shock</strong>:</p>
+                    <div class="guide-formula">LR = desplazamiento rueda / desplazamiento shock</div>
+                    <p>Si LR = 2.8, por cada 1mm de compresi&oacute;n del shock, la rueda sube 2.8mm. Esto significa que:</p>
+                    <ul>
+                        <li>El shock &ldquo;multiplica&rdquo; su recorrido: 59mm de stroke &rarr; ~165mm en rueda</li>
+                        <li>Pero la fuerza se divide: un muelle de 80 N/mm &rarr; la rueda siente ~10 N/mm</li>
+                    </ul>
+                    <p style="margin-top:12px"><strong>En la horquilla:</strong> LR = 1 siempre. No hay basculante ni bieletas. Todo es directo.</p>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Progresividad</h2>
+                    <p>Si el LR <strong>cambia</strong> a lo largo del recorrido, la suspensi&oacute;n es progresiva o regresiva:</p>
+                    <div class="guide-grid three-col">
+                        <div class="guide-block block-green">
+                            <h3>Progresivo (&gt;5%)</h3>
+                            <p>El LR sube al comprimir. Empieza <strong>suave</strong> (buen confort) y se <strong>endurece</strong> al final (resistencia a tocar fondo).</p>
+                            <span class="guide-verdict">Ideal para competici&oacute;n</span>
+                        </div>
+                        <div class="guide-block block-yellow">
+                            <h3>Lineal (&plusmn;5%)</h3>
+                            <p>LR constante. Comportamiento <strong>predecible</strong> pero sin ventajas adicionales.</p>
+                            <span class="guide-verdict">Aceptable</span>
+                        </div>
+                        <div class="guide-block block-red">
+                            <h3>Regresivo (&lt;-5%)</h3>
+                            <p>El LR baja al comprimir. Se <strong>ablanda</strong> justo cuando m&aacute;s necesitas firmeza.</p>
+                            <span class="guide-verdict">Evitar siempre</span>
+                        </div>
+                    </div>
+                    <p style="margin-top:16px"><strong>C&oacute;mo se controla:</strong> moviendo los <strong>puntos de anclaje</strong> del shock en el basculante y en el chasis. Es una decisi&oacute;n de dise&ntilde;o, no de ajuste.</p>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Geometr&iacute;a del basculante</h2>
+                    <p>Las dimensiones que afectan al comportamiento de la suspensi&oacute;n trasera:</p>
+                    <div class="guide-grid">
+                        <div class="guide-block">
+                            <h3>Longitud del basculante</h3>
+                            <p>Distancia del pivote al eje de la rueda. M&aacute;s largo = movimiento m&aacute;s suave y estable.</p>
+                        </div>
+                        <div class="guide-block">
+                            <h3>&Aacute;ngulo inicial</h3>
+                            <p>&Aacute;ngulo del basculante respecto a la horizontal en reposo. Afecta a la altura trasera y al anti-squat.</p>
+                        </div>
+                        <div class="guide-block">
+                            <h3>Anclaje shock-basculante</h3>
+                            <p>D&oacute;nde se conecta el shock al basculante. <strong>Es el par&aacute;metro que m&aacute;s afecta al LR</strong>. Moverlo cambia toda la curva de progresividad.</p>
+                        </div>
+                        <div class="guide-block">
+                            <h3>Anclaje shock-chasis</h3>
+                            <p>D&oacute;nde se fija el shock arriba. Afecta a la longitud libre del shock y al &aacute;ngulo de trabajo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card guide-card">
+                    <h2>Anti-squat y anti-dive</h2>
+                    <p>La geometr&iacute;a del basculante tambi&eacute;n afecta a c&oacute;mo reacciona la moto a la <strong>cadena/freno</strong>:</p>
+                    <div class="guide-grid">
+                        <div class="guide-block">
+                            <h3>Anti-squat</h3>
+                            <p>Tendencia de la moto a <strong>no hundirse atr&aacute;s</strong> al acelerar. Depende de la l&iacute;nea de fuerza de la cadena respecto al pivote del basculante. >100% = la moto se levanta al abrir gas.</p>
+                        </div>
+                        <div class="guide-block">
+                            <h3>Anti-dive</h3>
+                            <p>Tendencia a <strong>no hundirse delante</strong> al frenar. En horquillas convencionales es bajo. Se puede mejorar con sistemas de bieletas (FGRT, etc.) o geometr&iacute;a de chasis.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,98 +1,70 @@
-# Motorcycle Suspension Kinematics Analyzer
+# ISC - Ingenieria de Suspension para Competicion
 
-Herramienta de análisis de cinemática de suspensiones para equipos de competición de motociclismo.
+Plataforma web de ingenieria de suspension para el equipo de MotoStudent. Herramientas de calculo y analisis para disenar y ajustar la suspension de la moto de competicion.
 
-## Descripción
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-3.0-lightgrey?logo=flask)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-Este programa permite analizar y visualizar el comportamiento cinemático de suspensiones de motocicletas. Calcula leverage ratios, curvas de progresividad y proporciona visualizaciones interactivas de la geometría.
+## Estudios disponibles
 
-## Características
+| Estudio | Descripcion |
+|---------|-------------|
+| **Analisis de Suspension** | Leverage ratio, visualizacion de geometria, animacion y exportacion CSV |
+| **Calculadora de Sag** | Sag estatico trasero con equilibrio de fuerzas y leverage ratio |
+| **Horquilla Delantera** | Sag delantero, comparacion de muelles para Ohlins FGAM027 |
+| **Conceptos** | Glosario completo: muelle, amortiguador, precarga, progresividad... |
 
-- Introducción de geometría de suspensión mediante parámetros configurables
-- Cálculo de leverage ratio (motion ratio) a lo largo del recorrido
-- Análisis de progresividad (sistemas progresivos, lineales o regresivos)
-- Visualización estática de la geometría
-- Animación del movimiento de la suspensión
-- Exportación de datos a CSV para análisis adicional
+## Demo
 
-## Instalación
+La app esta desplegada en Render: *(link pendiente tras deploy)*
 
-### Windows (Recomendado)
-
-Para usuarios de Windows, usa los scripts automatizados:
-
-1. **Instalar dependencias:** Ejecuta `install.bat` (doble clic o desde terminal)
-2. **Ejecutar programa:** Ejecuta `run.bat`
-3. **Verificar instalación:** Ejecuta `test.bat`
-
-Ver [README_WINDOWS.md](README_WINDOWS.md) para instrucciones detalladas.
-
-### Linux/Mac
-
-1. Clonar el repositorio
-2. Instalar dependencias:
+## Ejecutar en local
 
 ```bash
+# Instalar dependencias
 pip install -r requirements.txt
+
+# Lanzar servidor de desarrollo
+python web_app.py
 ```
 
-Ver [INSTALLATION.md](INSTALLATION.md) para instrucciones completas.
+Abrir http://localhost:5000 en el navegador.
 
-## Uso
+## Stack
 
-Ejecutar el programa principal:
-
-```bash
-python main.py
-```
-
-El programa presenta un menú interactivo con las siguientes opciones:
-
-1. Visualizar geometría en posición específica
-2. Analizar curva de leverage ratio
-3. Animar movimiento de suspensión
-4. Calcular leverage ratio en posición específica
-5. Exportar datos de análisis
-6. Modificar geometría
-0. Salir
-
-## Sistema de Coordenadas
-
-- **Origen (0,0)**: Eje de giro del basculante (pivote del chasis)
-- **Eje X**: Horizontal positivo hacia adelante
-- **Eje Y**: Vertical positivo hacia arriba
-- **Unidades**: milímetros (mm)
-
-## Configuraciones Soportadas
-
-### Actual
-- Sistema directo (amortiguador anclado a basculante y chasis, sin bieletas)
-
-### Futuro
-- Sistemas con bieletas
-- Configuraciones progresivas complejas
+- **Backend**: Python, Flask, NumPy, SciPy, Matplotlib
+- **Frontend**: HTML/CSS/JS vanilla (dark theme, 6 paletas)
+- **Deploy**: Gunicorn + Render
 
 ## Arquitectura
 
-El proyecto está organizado en módulos:
+```
+web_app.py                 # Flask API (endpoints REST)
+web/
+  templates/index.html     # SPA - toda la UI
+  static/
+    css/style.css          # Dark theme con variables CSS
+    js/app.js              # Logica de navegacion y fetch
+src/
+  core/geometry.py         # Primitivas: Point, Vector2D, Link
+  suspension/
+    base.py                # Clases abstractas
+    direct_shock.py        # Implementacion sistema directo
+  analysis/
+    leverage_ratio.py      # Analisis de leverage ratio
+  visualization/
+    plotter.py             # Graficos matplotlib
+    animator.py            # Animaciones GIF
+examples/
+  sample_configs.py        # 5 presets de geometria (Sportbike, Enduro, MotoGP...)
+```
 
-- `src/core/`: Geometría fundamental (puntos, vectores, enlaces)
-- `src/suspension/`: Sistemas de suspensión
-- `src/analysis/`: Herramientas de análisis cinemático
-- `src/visualization/`: Visualización y animación
-- `examples/`: Configuraciones predefinidas
+## Componentes de la moto
 
-## Dependencias
+- **Amortiguador trasero**: Ohlins S36DR1 (278mm libre, 59mm stroke)
+- **Horquilla delantera**: Ohlins FGAM027 (110mm recorrido, muelles 35-65 N/mm)
 
-- Python >= 3.7
-- NumPy >= 1.21.0
-- Matplotlib >= 3.5.0
-- SciPy >= 1.7.0
+## Equipo
 
-## Autores
-
-Equipo de competición motorstudent
-
-## Licencia
-
-Proyecto interno de competición
+Proyecto del equipo de MotoStudent - ISC Racing
