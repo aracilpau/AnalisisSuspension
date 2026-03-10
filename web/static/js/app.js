@@ -426,12 +426,14 @@ document.getElementById('btn-fork-calculate').addEventListener('click', async ()
     btn.textContent = 'Calculando...';
 
     try {
+        const kLbsIn = parseFloat(document.getElementById('fork-spring_rate').value);
+        const kNmm = kLbsIn * 0.17513;
         const res = await fetch('/api/fork_sag', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 travel: document.getElementById('fork-travel').value,
-                spring_rate: document.getElementById('fork-spring_rate').value,
+                spring_rate: kNmm,
                 preload: document.getElementById('fork-preload').value,
                 weight: document.getElementById('fork-weight').value
             })
@@ -492,6 +494,7 @@ function showForkResults(data) {
                 <div class="stat-card">
                     <span class="stat-label">Tasa total (2×)</span>
                     <span class="stat-value">${data.total_rate} N/mm</span>
+                    <span class="stat-label">${(data.total_rate / 0.17513 / 2).toFixed(0)} lbs/in × 2</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">Recorrido libre</span>
@@ -545,7 +548,7 @@ document.getElementById('btn-fork-compare').addEventListener('click', async () =
                         : '<span style="color:var(--accent);font-size:12px">Blando</span>';
                 html += `
                     <div class="stat-card">
-                        <span class="stat-label">${r.spring_rate} N/mm (×2 = ${r.total_rate})</span>
+                        <span class="stat-label">${r.spring_rate} lbs/in (${r.spring_rate_nmm} N/mm × 2)</span>
                         <span class="stat-value ${pctClass}">${r.sag} mm</span>
                         <span class="stat-label">${r.sag_percent}% — ${tag}</span>
                     </div>`;

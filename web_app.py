@@ -493,10 +493,12 @@ def fork_compare():
         weight = float(data.get('weight', 95))
 
         weight_force = weight * 9.81
-        spring_rates = [35, 40, 45, 50, 55, 60, 65]
+        # Spring rates in lbs/in, convert to N/mm (1 lbs/in = 0.17513 N/mm)
+        spring_rates_lbsin = [35, 40, 45, 50, 55, 60, 65]
         results = []
 
-        for k in spring_rates:
+        for k_lbsin in spring_rates_lbsin:
+            k = k_lbsin * 0.17513  # N/mm per spring
             total_rate = 2 * k
             sag = weight_force / total_rate - preload
             if sag < 0:
@@ -505,10 +507,11 @@ def fork_compare():
                 sag = travel
             sag_pct = (sag / travel) * 100
             results.append({
-                'spring_rate': k,
+                'spring_rate': k_lbsin,
+                'spring_rate_nmm': round(k, 2),
                 'sag': round(sag, 1),
                 'sag_percent': round(sag_pct, 1),
-                'total_rate': round(total_rate, 0)
+                'total_rate': round(total_rate, 1)
             })
 
         # Generate comparison plot
@@ -525,7 +528,7 @@ def fork_compare():
 
         sags = [r['sag'] for r in results]
         pcts = [r['sag_percent'] for r in results]
-        labels = [f"{k} N/mm" for k in spring_rates]
+        labels = [f"{k} lbs/in" for k in spring_rates_lbsin]
 
         colors = []
         for p in pcts:
@@ -551,7 +554,7 @@ def fork_compare():
             ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 1,
                     f'{s:.0f}mm\n({p:.0f}%)', ha='center', va='bottom', color='#eee', fontsize=9)
 
-        ax.set_xlabel('Tasa del muelle (por barra)')
+        ax.set_xlabel('Tasa del muelle (lbs/in por barra)')
         ax.set_ylabel('Sag (mm)')
         ax.set_title(f'Comparación de muelles — {weight}kg, {preload}mm precarga')
         ax.set_ylim(0, max(sags) * 1.3 if max(sags) > 0 else travel)

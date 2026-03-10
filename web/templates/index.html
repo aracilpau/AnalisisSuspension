@@ -524,17 +524,9 @@
                             </label>
                         </div>
                         <div class="form-group">
-                            <h3>Muelle <span class="tooltip-icon" data-tip="En la horquilla hay DOS muelles (uno por barra). La tasa es por muelle. La fuerza total es el doble.">?</span></h3>
-                            <label>Tasa del muelle (N/mm) <span class="tooltip-icon" data-tip="Rigidez de CADA muelle. Disponibles: 35/40/45/50/55/60/65 N/mm.">?</span>
-                                <select id="fork-spring_rate">
-                                    <option value="35">35 N/mm</option>
-                                    <option value="40">40 N/mm</option>
-                                    <option value="45">45 N/mm</option>
-                                    <option value="50" selected>50 N/mm</option>
-                                    <option value="55">55 N/mm</option>
-                                    <option value="60">60 N/mm</option>
-                                    <option value="65">65 N/mm</option>
-                                </select>
+                            <h3>Muelle <span class="tooltip-icon" data-tip="En la horquilla hay DOS muelles (uno por barra). La tasa es por muelle en lbs/in. La fuerza total es el doble.">?</span></h3>
+                            <label>Tasa del muelle (lbs/in) <span class="tooltip-icon" data-tip="Rigidez de CADA muelle en lbs/in. FGAM027 disponibles: 35/40/45/50/55/60/65. Se convierte a N/mm autom&aacute;ticamente (1 lbs/in = 0.175 N/mm).">?</span>
+                                <input type="number" id="fork-spring_rate" value="50" step="1" min="1">
                             </label>
                             <label>Precarga (mm) <span class="tooltip-icon" data-tip="Precompresi&oacute;n del muelle al montarlo.">?</span>
                                 <input type="number" id="fork-preload" value="5" step="0.5" min="0">
